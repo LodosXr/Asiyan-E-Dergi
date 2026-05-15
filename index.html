@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Premium e-magazine flipbook" />
+  <title>Aşiyân — E-Dergi</title>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app-root">
+    <header class="app-header" aria-label="Üst çubuk">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-title">Aşiyân</span>
+        <span class="brand-sub">E-Dergi</span>
+      </div>
+    </header>
+
+    <div id="loading-overlay" class="loading-overlay" role="status" aria-live="polite" aria-busy="true">
+      <div class="loading-inner">
+        <div class="loading-spinner" aria-hidden="true"></div>
+        <p class="loading-text">Sayfalar hazırlanıyor…</p>
+      </div>
+    </div>
+
+    <main class="stage" aria-label="Dergi görünümü">
+      <div class="ambient-glow" aria-hidden="true"></div>
+
+      <div id="book-shell" class="book-shell">
+        <div id="zoom-viewport" class="zoom-viewport">
+          <div id="zoom-pan-layer" class="zoom-pan-layer">
+            <div id="flipbook-mount" class="flipbook-mount">
+              <div id="flipbook" class="flipbook"></div>
+            </div>
+          </div>
+          <div id="interaction-blocker" class="interaction-blocker" aria-hidden="true"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Sabit yan oklar: sahne dışında, Turn katmanlarının üstünde -->
+  <button
+    type="button"
+    id="btn-prev-side"
+    class="side-nav-btn side-nav-btn--prev side-nav-btn--fixed"
+    title="Önceki sayfa"
+    aria-label="Önceki sayfa"
+  >
+    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  <button
+    type="button"
+    id="btn-next-side"
+    class="side-nav-btn side-nav-btn--next side-nav-btn--fixed"
+    title="Sonraki sayfa"
+    aria-label="Sonraki sayfa"
+  >
+    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+  </button>
+
+  <!-- Dışarıda: Turn.js / sahne katmanlarının üstüne binmesin diye gövde sonunda, en üstte -->
+  <nav class="toolbar" aria-label="Sayfa kontrolleri">
+    <button type="button" id="btn-prev" class="tb-btn" title="Önceki sayfa" aria-label="Önceki sayfa">
+      <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+    </button>
+    <button type="button" id="btn-next" class="tb-btn" title="Sonraki sayfa" aria-label="Sonraki sayfa">
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+    <span id="page-counter" class="page-counter" aria-live="polite">1 / 1</span>
+    <button type="button" id="btn-zoom" class="tb-btn" title="Yakınlaştır" aria-label="Yakınlaştır">
+      <i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i>
+    </button>
+    <button type="button" id="btn-fullscreen" class="tb-btn" title="Tam ekran" aria-label="Tam ekran">
+      <i class="fa-solid fa-expand" aria-hidden="true"></i>
+    </button>
+    <button type="button" id="btn-sound" class="tb-btn" title="Ses" aria-label="Sesi aç veya kapat">
+      <i class="fa-solid fa-volume-high" aria-hidden="true"></i>
+    </button>
+  </nav>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js@master/turn.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+</html>
